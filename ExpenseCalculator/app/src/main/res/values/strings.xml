@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">ExpenseCalculator</string>
+
+    <!-- Splash Icon -->
+    <string name="splashContentDescription">Splash Icon</string>
+
+    <!-- Login Activity -->
+    <string name="loginHeader">ExpenseMe</string>
+    <string name="loginTextview">Login</string>
+    <string name="signInMessage">Please Sign in to continue</string>
+    <string name="no_account">Don\'t have an account? <font color='#01C6DB'>Signup</font></string>
+
+    <!-- Signup Activity -->
+    <string name="signupHeader">Create Account</string>
+    <string name="nameHint">Name</string>
+    <string name="emailHint">Email</string>
+    <string name="passHint">Password</string>
+    <string name="signupBtn">Signup</string>
+    <string name="already_have_an_account">Already have an account? <font color='#01C6DB'>Login</font></string>
+
+    <!-- Home Screen Main Tab Activity Starts Here-->
+    <string name="welcome_user">Hi User</string>
+    <string name="totalAmount">$0</string>
+    <string name="dropdown_contentDesc">Months</string>
+    <string name="logout">Logout</string>
+
+    <!--Card View Strings-->
+    <string name="incomeTV">Income</string>
+    <string name="incomeAmt">$0</string>
+
+    <!-- Home Screen Main Tab Activity Ends Here -->
+
+    <!--Activity Add expenses Activity-->
+    <string name="expenseTypeStaticString">Chic Fil A</string>
+    <string name="CreatedOnStaticString">Created on</string>
+    <string name="EnterDescriptionStaticString">Enter Description</string>
+    <string name="closebtnStaticString">Cancel</string>
+    <string name="payWithStaticString">Paid With</string>
+    <string name="addbtn">Add</string>
+
+    <!--Activity Display Data strings-->
+    <string name="getExpenseStaticText">Get Expenses</string>
+    <string name="title_activity_main_navgiation">MainNavgiationActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_navigation_drawer">navigationDrawerActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <!--Card View Strings-->
+</resources>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#221B1B"
+    tools:context=".AddExpenseActivity">
+
+    <Button
+        android:id="@+id/closeBtn"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="180dp"
+        android:layout_marginBottom="23dp"
+        android:background="@drawable/border_rounder_with_color_black"
+        android:backgroundTint="#000000"
+        android:gravity="center"
+        android:text="@string/closebtnStaticString"
+        android:textSize="20sp"
+        android:onClick="onClickCloseBtn"
+        app:layout_constraintBottom_toTopOf="@+id/editTextExpenseTitle"
+        app:layout_constraintEnd_toStartOf="@+id/selectTypeDropdwn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--Dropdown to select months-->
+
+    <Spinner
+        android:id="@+id/selectTypeDropdwn"
+        android:layout_width="80dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/border_rounder_with_color_black"
+        android:contentDescription="@string/dropdown_contentDesc"
+        android:gravity="center"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/editTextExpenseTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextExpenseTitle"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="#B8B6B6"
+        android:ems="10"
+        android:fontFamily="@font/andada"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:hint="@string/expenseTypeStaticString"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/editTextDate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="0dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/border_rounder_with_color"
+        android:ems="10"
+        android:fontFamily="@font/andada"
+        android:gravity="center_vertical"
+        android:hint="@string/CreatedOnStaticString"
+        android:inputType="date"
+        android:padding="10sp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/editTextExpenseDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextExpenseDescription"
+        android:layout_width="335dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="39dp"
+        android:background="@drawable/border_rounder_with_color"
+        android:ems="10"
+        android:fontFamily="@font/andada"
+        android:gravity="center_vertical"
+        android:hint="@string/EnterDescriptionStaticString"
+        android:inputType="textMultiLine"
+        android:lines="4"
+        android:padding="10sp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/paidWithTV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/paidWithTV"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="177dp"
+        android:layout_marginBottom="11dp"
+        android:gravity="center_vertical"
+        android:text="@string/payWithStaticString"
+        android:textColor="#FFFFFF"
+        android:textSize="26sp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroupPaidWith"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/amountTextView"
+        android:layout_width="322dp"
+        android:layout_height="85dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#00FFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/andada"
+        android:gravity="center"
+        android:inputType="numberDecimal"
+        android:hint="$0.00"
+        android:textColorHint="@color/white"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/addBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupPaidWith"
+        android:layout_width="346dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="13dp"
+        android:checkedButton="@id/cashRadioBtn"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/amountTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <RadioButton
+            android:id="@+id/cashRadioBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/andada"
+            android:text="Cash"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/BankAccountRadioBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/andada"
+            android:text="Bank Account"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/addBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="158dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="29dp"
+        android:background="@drawable/border_rounder_with_color_black"
+        android:text="@string/addbtn"
+        android:onClick="onClickAddBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

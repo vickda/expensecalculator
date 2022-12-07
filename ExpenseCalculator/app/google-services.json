@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "350713610813",
+    "project_id": "expensecalculator-efcdf",
+    "storage_bucket": "expensecalculator-efcdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350713610813:android:db63911c6608897b586054",
+        "android_client_info": {
+          "package_name": "com.example.expensecalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350713610813-c1u19pgnn3prqhnkv1u32p1tobbq32de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcT2MCcqIuvMtU8xdD7ToJG4wfG5EF0X8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350713610813-c1u19pgnn3prqhnkv1u32p1tobbq32de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
