@@ -39,37 +39,51 @@ public class ExpenseCustomAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        TextView date = null, paymentType = null, category = null, money = null;
-        ImageView statementImage = null;
         String categoryValue = statements.get(position).getCategory();
+        ViewHolderItems viewHolderItems;
 
         // Getting all View by IDs
         if(convertView == null){
             convertView = inflater.inflate(R.layout.mainlistlayout, parent, false);
 
-            paymentType = convertView.findViewById(R.id.spendMethodTV);
-            category = convertView.findViewById(R.id.expenseCategoryTV);
-            date = convertView.findViewById(R.id.expenseDate);
-            money = convertView.findViewById(R.id.amount);
-            statementImage = convertView.findViewById(R.id.statementImage);
+            viewHolderItems = new ViewHolderItems();
+
+            viewHolderItems.paymentType = convertView.findViewById(R.id.spendMethodTV);
+            viewHolderItems.category = convertView.findViewById(R.id.expenseCategoryTV);
+            viewHolderItems.date = convertView.findViewById(R.id.expenseDate);
+            viewHolderItems.money = convertView.findViewById(R.id.amount);
+            viewHolderItems.statementImage = convertView.findViewById(R.id.statementImage);
+
+            // Setting our object into the convert View
+            convertView.setTag(viewHolderItems);
 
         }
 
+        ViewHolderItems holder = (ViewHolderItems) convertView.getTag();
+
         // Assigning values to each textviews
-        paymentType.setText(statements.get(position).getPaymentType());
-        category.setText(categoryValue);
-        date.setText(statements.get(position).getDate());
-        money.setText(statements.get(position).getMoney());
+        holder.paymentType.setText(statements.get(position).getPaymentType());
+        holder.category.setText(categoryValue);
+        holder.date.setText(statements.get(position).getDate());
+        holder.money.setText(statements.get(position).getMoney());
 
         // Set the statement image based on category
         if(categoryValue.equals("Expense")){
-            statementImage.setImageResource(R.drawable.expense);
+            holder.statementImage.setImageResource(R.drawable.expense);
         }else if (categoryValue.equals("Income")){
-            statementImage.setImageResource(R.drawable.income);
+            holder.statementImage.setImageResource(R.drawable.income);
         }
 
-        Log.i("get view", "getView: " + statements.get(position).getPaymentType());
-
         return convertView;
+    }
+
+    protected static class ViewHolderItems {
+
+
+        TextView date , paymentType, category, money;
+        ImageView statementImage;
+
+//        TextView date = null, paymentType = null, category = null, money = null;
+//        ImageView statementImage = null;
     }
 }

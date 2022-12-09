@@ -70,11 +70,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Get Email
         fireBaseUserInstance = FirebaseAuth.getInstance().getCurrentUser();
-        userEmail = fireBaseUserInstance.getEmail();
+        userEmail = "vdas@hawk.iit.edu";
+//        userEmail = fireBaseUserInstance.getEmail();
 
         // Set Username
         userNameTV = findViewById(R.id.welcomeUserTV);
-        fullDisplayName = fireBaseUserInstance.getDisplayName();
+//        fullDisplayName = fireBaseUserInstance.getDisplayName();
+        fullDisplayName = "Vicky";
 
         Log.i("onCreate: ", fullDisplayName + "");
 
@@ -103,24 +105,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ExpenseCustomAdapter expenseCustomAdapter = new ExpenseCustomAdapter(this, statements);
         listView.setAdapter(expenseCustomAdapter);
 
-        // Show ads every 10 minutes
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                AlertDialog.Builder dialogBox = new AlertDialog.Builder(MainActivity.this);
-                dialogBox.setTitle("Annonying Ad here")
-                        .setMessage("This is an ad!! To stop this purchase our pro pack for just $2 per month")
-                        .setCancelable(true)
-                        .setNeutralButton("Okay", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        })
-                        .show();
-                handler.postDelayed(this, 100000);
-            }
-        }, 100000);
+//        // Show ads every 10 minutes
+//        Handler handler = new Handler();
+//        handler.postDelayed(new Runnable() {
+//            public void run() {
+//                AlertDialog.Builder dialogBox = new AlertDialog.Builder(MainActivity.this);
+//                dialogBox.setTitle("Annonying Ad here")
+//                        .setMessage("This is an ad!! To stop this purchase our pro pack for just $2 per month")
+//                        .setCancelable(true)
+//                        .setNeutralButton("Okay", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                dialogInterface.cancel();
+//                            }
+//                        })
+//                        .show();
+//                handler.postDelayed(this, 100000);
+//            }
+//        }, 100000);
 
 
 

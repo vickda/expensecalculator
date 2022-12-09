@@ -31,7 +31,8 @@
     <!-- Home Screen Main Tab Activity Ends Here -->
 
     <!--Activity Add expenses Activity-->
-    <string name="expenseTypeStaticString">Chic Fil A</string>
+    <string name="expenseType">Expense Type</string>
+    <string name="expenseTypeStaticString">E.g. Chic Fil A</string>
     <string name="CreatedOnStaticString">Created on</string>
     <string name="EnterDescriptionStaticString">Enter Description</string>
     <string name="closebtnStaticString">Cancel</string>
