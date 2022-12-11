@@ -145,8 +145,9 @@
                     android:id="@+id/downIcon"
                     android:layout_width="27dp"
                     android:layout_height="28dp"
-                    android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toStartOf="@+id/expenseTV"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@android:drawable/stat_sys_download_done" />
@@ -156,7 +157,7 @@
                     android:layout_width="58dp"
                     android:layout_height="28dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="50dp"
+                    android:layout_marginEnd="32dp"
                     android:fontFamily="@font/andada"
                     android:gravity="center_vertical"
                     android:text="Expense"
@@ -203,7 +204,7 @@
 
     <ListView
         android:id="@+id/expenseListview"
-        android:layout_width="408dp"
+        android:layout_width="0dp"
         android:layout_height="368dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="50dp"

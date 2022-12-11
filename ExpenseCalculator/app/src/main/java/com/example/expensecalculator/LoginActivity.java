@@ -138,10 +138,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            finish();
                             startActivity(new Intent(LoginActivity.this, MainActivity_WithNavigation.class));
                         }
                         else{
-                            loginErrorMsg.setText("Failed to login please try again");
+                            loginErrorMsg.setText(task.getException().toString().split(":")[1]);
+                            loginProgressBar.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -184,9 +186,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         db.insertUser(email);
                                     }
 
+                                    finish();
                                     startActivity(new Intent(LoginActivity.this, MainActivity_WithNavigation.class));
                                 } else{
-                                    loginErrorMsg.setText("Oops something went wrong");
+                                    loginErrorMsg.setText(task.getException().toString());
+                                    loginProgressBar.setVisibility(View.GONE);
                                     finish();
                                 }
                             }
@@ -195,7 +199,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             } catch (ApiException e) {
                 e.printStackTrace();
-                loginErrorMsg.setText("Oops something went wrong");
+                loginErrorMsg.setText(task.getException().toString());
+                loginProgressBar.setVisibility(View.GONE);
+//                loginErrorMsg.setText("Oops something went wrong");
                 finish();
             }
         }

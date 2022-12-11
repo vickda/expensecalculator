@@ -49,6 +49,8 @@ public class homeFragment extends Fragment implements View.OnClickListener{
     private String userEmail, userName, fullDisplayName;
     private Double totalIncomeAmount = 0.0, totalExpenseAmount = 0.0;
 
+    AlertDialog.Builder dialogBox; // Dialog Box
+
 
     public homeFragment() {
         // Required empty public constructor
@@ -113,22 +115,27 @@ public class homeFragment extends Fragment implements View.OnClickListener{
 
         // Show ads every 10 minutes
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                AlertDialog.Builder dialogBox = new AlertDialog.Builder(getContext());
-                dialogBox.setTitle("Annonying Ad here")
-                        .setMessage("This is an ad!! To stop this purchase our pro pack for just $2 per month")
-                        .setCancelable(true)
-                        .setNeutralButton("Okay", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.cancel();
-                            }
-                        })
-                        .show();
-                handler.postDelayed(this, 100000);
-            }
-        }, 100000);
+       try {
+           handler.postDelayed(new Runnable() {
+               public void run() {
+                   dialogBox = new AlertDialog.Builder(getContext());
+                   dialogBox.setTitle("Annonying Ad here")
+                           .setMessage("This is an ad!! To stop this purchase our pro pack for just $2 per month")
+                           .setCancelable(true)
+                           .setNeutralButton("Okay", new DialogInterface.OnClickListener() {
+                               @Override
+                               public void onClick(DialogInterface dialogInterface, int i) {
+                                   dialogInterface.cancel();
+                               }
+                           })
+                           .show();
+//                handler.postDelayed(this, 100000);
+               }
+           }, 3000);
+       }
+       catch (Exception e){
+           Log.i("Dialog Box Crash: ", e.getMessage());
+       }
 
 
 
@@ -171,7 +178,7 @@ public class homeFragment extends Fragment implements View.OnClickListener{
 
     private void logoutUser() {
         FirebaseAuth.getInstance().signOut();
-//        finish();
+        getActivity().finish();
         startActivity(new Intent(getContext(), LoginActivity.class));
     }
 
@@ -241,19 +248,5 @@ public class homeFragment extends Fragment implements View.OnClickListener{
             Toast.makeText(getContext(), "No Data Found", Toast.LENGTH_SHORT).show();
         }
         return allStatements;
-    }
-
-    public void showAd(){
-        AlertDialog.Builder dialogBox = new AlertDialog.Builder(getContext());
-        dialogBox.setTitle("Annonying Ad here")
-                .setMessage("This is an ad!! To stop this purchase our pro pack for just $2 per month")
-                .setCancelable(true)
-                .setNeutralButton("Okay", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                })
-                .show();
     }
 }

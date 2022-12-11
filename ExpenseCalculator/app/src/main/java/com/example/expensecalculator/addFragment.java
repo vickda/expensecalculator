@@ -2,7 +2,6 @@ package com.example.expensecalculator;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -94,7 +93,8 @@ public class addFragment extends Fragment implements View.OnClickListener{
         selectTypeDropdwn = getView().findViewById(R.id.selectTypeDropdwn);
         String[] category = {"Expense", "Income"};
 
-        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item,  category);
+        ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(getContext(),R.layout.spinner_selectedtext_color,  category);
+        categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         selectTypeDropdwn.setAdapter(categoryAdapter);
 
         // Setup Expense Title
@@ -134,6 +134,7 @@ public class addFragment extends Fragment implements View.OnClickListener{
                     editTextExpenseTitle.setText("");
                     editTextExpenseDescription.setText("");
                     amountTextView.setText("");
+                    editTextDate.setText(getTodaysDate());
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getContext(), "Oops Something went wrong (Cant Add Try Again later)", Toast.LENGTH_SHORT).show();
@@ -195,7 +196,7 @@ public class addFragment extends Fragment implements View.OnClickListener{
     private void addToDatabase(JSONObject expenseJson) {
 
         String expenseData, monthName, finalJsonString;
-        Integer  year;
+        Integer year;
 
         year = Integer.parseInt(dateForJson.split("/")[2]);
         monthName = (Month.of(Integer.parseInt(dateForJson.split("/")[0]))).toString();
@@ -212,13 +213,22 @@ public class addFragment extends Fragment implements View.OnClickListener{
             db.updateUserData(userEmail, finalJsonString);
 
             db.getAllData();
+            Toast.makeText(getContext(), "Data Added", Toast.LENGTH_SHORT).show();
             return;
         }
         // Parse JSON if expense data is not null
             // Parse Json and add the expense data into users data
             try {
                 JSONObject jObject = new JSONObject(expenseData); // Parse Entire JSON
-                JSONObject yearData = jObject.getJSONObject(year.toString()); // Get Current Year Data
+                JSONObject yearData = jObject.optJSONObject(year.toString()); // Get Current Year Data
+
+                // If Year Data is null
+                if(yearData==null){
+                    jObject.put(""+year, new JSONObject());
+                    yearData = jObject.optJSONObject(year.toString());
+                }
+
+                // Get The Month Data
                 JSONObject monthData = yearData.optJSONObject(monthName); // Get Current Month Data
 
                 // If month data is null
@@ -231,8 +241,7 @@ public class addFragment extends Fragment implements View.OnClickListener{
                     jObj.put(dateForJson, jarr);
                     yearData.put(monthName, jObj);
 
-                    Log.i("addToDatabase: ", jarr + "\n" + yearData);
-
+                    monthData = yearData.optJSONObject(monthName); // Get Updated Current Month Data
 
                 }else{
 
@@ -243,6 +252,7 @@ public class addFragment extends Fragment implements View.OnClickListener{
 
                 // Update data into the database
                 db.updateUserData(userEmail, jObject.toString());
+                Toast.makeText(getContext(), "Data Added", Toast.LENGTH_SHORT).show();
                 db.getAllData();
 
             }

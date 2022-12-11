@@ -17,6 +17,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // To get out of splash screen to login page
+                finish();
                 Intent i = new Intent(SplashScreenActivity.this, LoginActivity.class);
                 startActivity(i);
             }
